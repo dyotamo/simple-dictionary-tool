@@ -1,15 +1,3 @@
-def dssize(arg):
-    """Compute the size of a data structure,
-I didn't see this in Python"""
-
-    temp = 0
-
-    for _ in arg:
-        temp += 1
-
-    return temp
-
-
 def get_keys(arg):
     """Returns a list of keys in the dictionary (Not working)"""
     temp = []
@@ -33,8 +21,8 @@ def probability(arg0, arg1):
 
 
 def analyze_str(arg0, arg1):
-    s1 = dssize(arg0)
-    s2 = dssize(arg1)
+    s1 = len(arg0)
+    s2 = len(arg1)
 
     str1 = arg0
     str2 = arg1
@@ -45,11 +33,11 @@ def analyze_str(arg0, arg1):
         str1 += generate_str(s2 - s1)
 
     # Or str2, same size ...
-    return probability(match_nr(str1, str2), dssize(str1)) >= 0.5
+    return probability(match_nr(str1, str2), len(str1)) >= 0.5
 
 
 def match_nr(arg0, arg1):
-    sz = dssize(arg0)
+    sz = len(arg0)
     c = 0
 
     temp = 0

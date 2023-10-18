@@ -3,7 +3,7 @@ import utils
 
 args = sys.argv[1:]
 
-if utils.dssize(args) == 0:
+if len(args) == 0:
     print("Usage: dictionary [key] | dictionary --help")
     exit(1)
 else:
