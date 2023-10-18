@@ -1,17 +1,9 @@
-def get_keys(arg):
+def get_keys(fd):
     """Returns a list of keys in the dictionary (Not working)"""
     temp = []
-    for x in arg:
+    for x in fd:
         if x[0] != "\t" and x != "\n":
             temp.append(x[:-1])
-
-    return temp
-
-
-def generate_str(arg):
-    temp = ""
-    for _ in range(arg):
-        temp += " "
 
     return temp
 
@@ -20,23 +12,23 @@ def probability(arg0, arg1):
     return float(arg0)/arg1
 
 
-def analyze_str(arg0, arg1):
-    s1 = len(arg0)
-    s2 = len(arg1)
+def analyze_str(key, key_to_match):
+    s1 = len(key)
+    s2 = len(key_to_match)
 
-    str1 = arg0
-    str2 = arg1
-
+    # Fill spaces
     if s1 > s2:
-        str2 += generate_str(s1 - s2)
+        key_to_match += (" " * (s1 - s2))
     elif s1 < s2:
-        str1 += generate_str(s2 - s1)
+        key += (" " * (s2 - s1))
 
-    # Or str2, same size ...
-    return probability(match_nr(str1, str2), len(str1)) >= 0.5
+    # Or key_to_match, same size ...
+    matches = match_nr(key, key_to_match)
+    return probability(matches, len(key)) >= 0.50
 
 
 def match_nr(arg0, arg1):
+    """ Counts how many matches two strings of the same size have """
     sz = len(arg0)
     c = 0
 
